@@ -1,6 +1,7 @@
 import csv
 import tkinter as t
 
+#variables for the math
 mortgageAmount = 0
 mortgageNumber = 0
 rentAmount = 0
@@ -13,6 +14,7 @@ avgMortgageAmount = 0
 avgRentAmount = 0
 avgOwnAmount = 0
 
+#graph variables
 tab1V = "0"
 tab2V = "0"
 tab3V = "0"
@@ -20,14 +22,15 @@ tab4V = "0"
 tab5V = "0"
 tab6V = "0"
 tab7Max = "0"
+mortgageRatio = 0
+rentRatio = 0
+ownRatio = 0
 
-mortgageRatio = 0.2
-rentRatio = 0.4
-ownRatio = 0.5
 
 with open('home_ownership_data.csv') as id:
     idFinder = csv.reader(id)
 
+    #goes through each row  and records the type to be dealt with in second for
     for row in idFinder:
         if row[1] == 'MORTGAGE':
             mortgageNumber += 1
@@ -43,6 +46,7 @@ with open('home_ownership_data.csv') as id:
         with open('loan_data.csv') as file:
             reader = csv.reader(file)
 
+            #finds the id found earlier in the first for and adds the amount to the appropriate variable, then breaks
             for row in reader:
                 if row[0] == currentID:
                     if currentType == 'M':
@@ -53,13 +57,15 @@ with open('home_ownership_data.csv') as id:
                         ownAmount += int(row[1])
                     break
 
+#calculates averages and displays the data on the command line
 avgMortgageAmount = mortgageAmount/mortgageNumber
 avgRentAmount = rentAmount/rentNumber
 avgOwnAmount = ownAmount/ownNumber
-
 print("Home Ownership,  Average Loan Amount \nMortgage: " + str(avgMortgageAmount) +
           "\nRent: " + str(avgRentAmount) + "\nOwn: " + str(avgOwnAmount))
 
+
+#find max value for the graph and round it up a suitable amount
 tab7Max = avgMortgageAmount
 
 if avgRentAmount > tab7Max:
@@ -79,6 +85,7 @@ temp = int(temp)
 temp += 1
 tab7Max = temp * magnitude
 
+#assign suitable increment values to the graph
 tab1V = int(tab7Max/7)
 tab2V = tab1V*2
 tab3V = tab1V*3
@@ -86,10 +93,13 @@ tab4V = tab1V*4
 tab5V = tab1V*5
 tab6V = tab1V*6
 
+#assign rations for the displaying of the data on the graph
 mortgageRatio = avgMortgageAmount/tab7Max
 rentRatio = avgRentAmount/tab7Max
 ownRatio = avgOwnAmount/tab7Max
 
+
+#tkinter to create the graph is below
 root = t.Tk()
 
 w = t.Canvas(root, height=700, width=1000)
@@ -153,5 +163,3 @@ ownTitle = t.Label(frame, text="Own")
 ownTitle.place(relx=0.8, rely=0.91, anchor='n')
 
 root.mainloop()
-
-
