@@ -1,10 +1,15 @@
 # MAIS 202 Fall 2019 - Application Coding Challenge
 
-1.Download the repository
-2.Use command line to cd into where you put the file
-3.Run MLTryouts.py
-4.The data will appear on the command line and the graph will appear on a pop-up tkinter window
-5.(Optional)Marvel in the majesty of an adjustable tkinter window, a rare commodity
+1. Download the repository
+
+2. Use command line to cd into where you put the file
+
+3. Run MLTryouts.py
+
+4. The data will appear on the command line and the graph will appear on a pop-up tkinter window
+
+5. (Optional)Marvel in the majesty of an adjustable tkinter window, a rare commodity
+
 
 [Application](https://docs.google.com/forms/d/e/1FAIpQLSffJrPvMK_wT8g6ALzwEr4jQAn4Sm6a-ZAY8oHmD6_5XFKmCA/viewform)
 
